@@ -18,9 +18,9 @@ public class enemyMovement : MonoBehaviour {
 		seconds = (int)timer % 60;
 		if (seconds % 15 == 0 && !moved) {
 			moved = true;
-			rb.velocity = new Vector3 (Random.Range (-10.0f, 10.0f), 0.0f, Random.Range (-10.0f, 10.0f));
+			rb.velocity = new Vector3 (Random.Range (-20.0f, 20.0f), 0.0f, Random.Range (-20.0f, 20.0f));
 
-		} else if (seconds % 5 != 0 && moved || seconds % 5 == 0) {
+		} else if (seconds % 10 != 0 && moved || seconds % 10 == 0) {
 			moved = false;
 		}
 

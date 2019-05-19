@@ -51,10 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\camMove.cs" />
+     <Compile Include="Assets\endScene.cs" />
      <Compile Include="Assets\enemyMovement.cs" />
      <Compile Include="Assets\levelGen.cs" />
      <Compile Include="Assets\movement.cs" />
      <Compile Include="Assets\rotation.cs" />
+     <Compile Include="Assets\rpmDisplay.cs" />
+     <Compile Include="Assets\rpmDrain.cs" />
+     <Compile Include="Assets\scoreScript.cs" />
  <Reference Include="UnityEngine.UIAutomation">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
  </Reference>

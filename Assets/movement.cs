@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class movement : MonoBehaviour {
 	Rigidbody rb;
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody>();
+		scoreScript.totalCol = GameObject.FindGameObjectsWithTag ("collectible").Length;
 	}
 	
 	// Update is called once per frame
@@ -19,13 +19,13 @@ public class movement : MonoBehaviour {
 			rb.velocity = new Vector3 (rb.velocity.x, 0.0f, 8.0f);
 		}
 		if (Input.GetKey ("s")) {
-			rb.velocity = new Vector3 (rb.velocity.x, 0.0f, -8.0f);
+			rb.velocity = new Vector3 (rb.velocity.x, 0.0f, -5.0f);
 		}
 		if (Input.GetKey ("d")) {
-			rb.velocity = new Vector3 (8.0f, 0.0f, rb.velocity.z);
+			rb.velocity = new Vector3 (5.0f, 0.0f, rb.velocity.z);
 		}
 		if (Input.GetKey ("a")) {
-			rb.velocity = new Vector3 (-8.0f, 0.0f, rb.velocity.z);
+			rb.velocity = new Vector3 (-5.0f, 0.0f, rb.velocity.z);
 		}
 	}
 
@@ -38,7 +38,17 @@ public class movement : MonoBehaviour {
 			dir = -dir.normalized;
 
 			rb.AddForce (-rb.velocity * 100);
-			rotation.playerRPM -= 300;
+			rotation.playerHitLoss += 300;
+		}
+		if (c.gameObject.tag == "special") {
+			rotation.playerHitLoss -= 100;
+			c.gameObject.tag = "Untagged";
+		}
+
+		if (c.gameObject.tag == "collectible") {
+			Destroy (c.gameObject);
+			rotation.playerHitLoss -= 300;
+			scoreScript.numberOfCollectibles += 1;
 		}
 	}
 }
